@@ -69,7 +69,7 @@ return require('packer').startup(function(use)
     }
 
     -- Tree
-    use { 'ms-jpq/chadtree' }
+    use { 'ms-jpq/chadtree', disable = true }
     use {
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
@@ -79,7 +79,7 @@ return require('packer').startup(function(use)
                 enable = true
               }
         } end,
-        disable = true
+        disable = false
     }
 
     if packer_bootstrap then require('packer').sync() end
