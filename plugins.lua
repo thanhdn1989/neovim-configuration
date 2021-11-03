@@ -82,5 +82,12 @@ return require('packer').startup(function(use)
         disable = false
     }
 
+    use {
+        "akinsho/toggleterm.nvim",
+        config = function()
+          require("core.terminal").setup()
+        end
+      }
+
     if packer_bootstrap then require('packer').sync() end
 end)

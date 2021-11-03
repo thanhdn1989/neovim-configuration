@@ -10,4 +10,4 @@ vim.o.background = "dark"
 vim.g.colors_name = "onedark"
 vim.o.swapfile = false
 vim.o.scrolloff = 8
-
+vim.o.hidden = true
