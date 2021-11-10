@@ -20,21 +20,22 @@ function M:setup()
                                                                              .protocol
                                                                              .make_client_capabilities())
         
-        if server.name == "angularls" then
-            --local languageServerPath = vim.fn.stdpath('data').."/lsp_servers/angularls/node_modules/@angular/language-server"
-            local languageServerPath = vim.env.HOME.."/.nvm/versions/node/v16.13.0/lib/node_modules"
-            local cmd = {"ngserver", "--stdio", "--tsProbeLocations", languageServerPath , "--ngProbeLocations", languageServerPath}
-
-            server:setup{
-                capabilities = capabilities,
-                cmd = cmd,
-                on_new_config = function(new_config, new_root_dir)
-                    new_config.cmd = cmd
-                end,
-            }
-        else
             server:setup({capabilities = capabilities})
-        end
+        -- if server.name == "angularls" then
+        --     local languageServerPath = vim.fn.stdpath('data').."/lsp_servers/angularls/node_modules"
+        --     -- local languageServerPath = vim.env.HOME.."/.nvm/versions/node/v16.13.0/lib/node_modules"
+        --     local cmd = {languageServerPath.."/.bin/ngserver", "--stdio", "--tsProbeLocations", languageServerPath , "--ngProbeLocations", languageServerPath}
+        --
+        --     server:setup{
+        --         capabilities = capabilities,
+        --         cmd = cmd,
+        --         on_new_config = function(new_config, new_root_dir)
+        --             new_config.cmd = cmd
+        --         end,
+        --     }
+        -- else
+        --     server:setup({capabilities = capabilities})
+        -- end
     end)
 end
 

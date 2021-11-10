@@ -6,8 +6,29 @@ if fn.empty(fn.glob(install_path)) > 0 then
         'https://github.com/wbthomason/packer.nvim', install_path
     })
 end
-
-return require('packer').startup(function(use)
+local packer = require'packer'
+packer.init({
+git = {
+    cmd = 'git', -- The base command for git operations
+    subcommands = { -- Format strings for git subcommands
+      update         = 'pull --ff-only --progress --rebase=false',
+      install        = 'clone --depth %i --no-single-branch --progress',
+      fetch          = 'fetch --depth 999999 --progress',
+      checkout       = 'checkout %s --',
+      update_branch  = 'merge --ff-only @{u}',
+      current_branch = 'branch --show-current',
+      diff           = 'log --color=never --pretty=format:FMT --no-show-signature HEAD@{1}...HEAD',
+      diff_fmt       = '%%h %%s (%%cr)',
+      get_rev        = 'rev-parse --short HEAD',
+      get_msg        = 'log --color=never --pretty=format:FMT --no-show-signature HEAD -n 1',
+      submodules     = 'submodule update --init --recursive --progress'
+    },
+    depth = 1, -- Git clone depth
+    clone_timeout = 600, -- Timeout, in seconds, for git clones
+    default_url_format = 'https://github.com/%s' -- Lua format string used for "aaa/bbb" style plugins
+  }
+})
+return packer.startup(function(use)
     use "wbthomason/packer.nvim"
     use {'neovim/nvim-lspconfig', 'williamboman/nvim-lsp-installer'}
 
@@ -35,7 +56,8 @@ return require('packer').startup(function(use)
     -- Completion
     use {
         'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-path',
-        'hrsh7th/cmp-cmdline', 'hrsh7th/nvim-cmp', 'hrsh7th/cmp-vsnip',
+        'hrsh7th/cmp-cmdline', 'hrsh7th/nvim-cmp', 
+	'hrsh7th/cmp-vsnip',
         'hrsh7th/vim-vsnip'
     }
 
@@ -51,7 +73,7 @@ return require('packer').startup(function(use)
     use 'folke/which-key.nvim'
 
     use {'altercation/vim-colors-solarized'}
-    use {'joshdick/onedark.vim'}
+    use {'joshdick/onedark.vim', config = function() vim.cmd('colorscheme onedark') end }
     use {"kyazdani42/nvim-web-devicons"}
 
     use {
@@ -89,5 +111,8 @@ return require('packer').startup(function(use)
         end
       }
 
+	use { 'nvim-treesitter/nvim-treesitter' }
+
+	use { 'windwp/nvim-autopairs', config = function() require'nvim-autopairs'.setup() end }
     if packer_bootstrap then require('packer').sync() end
 end)
