@@ -55,12 +55,34 @@ local setup = {
     show_help = true -- show help message on the command line when the popup is visible
 }
 
+local Terminal  = require('toggleterm.terminal').Terminal
+local lazygit = Terminal:new({
+  cmd = "lazygit",
+  dir = "git_dir",
+  direction = "float",
+  float_opts = {
+    border = "double",
+  },
+  -- function to run on opening the terminal
+  on_open = function(term)
+    vim.cmd("startinsert!")
+    vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", {noremap = true, silent = true})
+  end,
+  -- function to run on closing the terminal
+  on_close = function(term)
+    vim.cmd("Closing terminal")
+  end,
+})
+function _lazygit_toggle()
+  lazygit:toggle()
+end
+
+
 local mappings = {
     ["w"] = {"<cmd>w!<CR>", "Save"},
     ["q"] = {"<cmd>q!<CR>", "Quit"},
     ["/"] = {"<cmd>lua require('Comment').toggle()<CR>", "Comment"},
     ["c"] = {"<cmd>BufferClose!<CR>", "Close Buffer"},
-    ["f"] = {"<cmd>Telescope find_files<CR>", "Find File"},
     ["h"] = {"<cmd>nohlsearch<CR>", "No Highlight"},
     b = {
         name = "Buffers",
@@ -130,7 +152,8 @@ local mappings = {
             "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
             "Workspace Symbols"
         }
-    }
+    },
+	g = { '<cmd>lua _lazygit_toggle()<CR>', 'Git'	}
 }
 
 local vmappings = {

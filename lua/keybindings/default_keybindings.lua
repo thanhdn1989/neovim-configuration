@@ -65,7 +65,9 @@ local keys = {
       ["]q"] = ":cnext<CR>",
       ["[q"] = ":cprev<CR>",
       ["<C-q>"] = ":call QuickFixToggle()<CR>",
-      ["<C-b>"] = ":NvimTreeToggle<CR>"
+      ["<C-b>"] = ":NvimTreeToggle<CR>",
+      ["<C-p>"] = ":Telescope find_files<CR>",
+      ["<C-F>"] = ":Telescope live_grep<CR>"
     },
 
     ---@usage change or add keymappings for terminal mode

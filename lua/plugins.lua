@@ -28,6 +28,14 @@ git = {
     default_url_format = 'https://github.com/%s' -- Lua format string used for "aaa/bbb" style plugins
   }
 })
+
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
+
 return packer.startup(function(use)
     use "wbthomason/packer.nvim"
     use {'neovim/nvim-lspconfig', 'williamboman/nvim-lsp-installer'}
@@ -114,5 +122,8 @@ return packer.startup(function(use)
 	use { 'nvim-treesitter/nvim-treesitter' }
 
 	use { 'windwp/nvim-autopairs', config = function() require'nvim-autopairs'.setup() end }
+
+	use { 'ggandor/lightspeed.nvim' }
+
     if packer_bootstrap then require('packer').sync() end
 end)
