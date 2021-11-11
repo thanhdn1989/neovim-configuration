@@ -157,7 +157,13 @@ local mappings = {
 }
 
 local vmappings = {
-    ["/"] = {"<ESC><CMD>lua ___comment_gc(vim.fn.visualmode())<CR>", "Comment"}
+    ["/"] = {"<ESC><CMD>lua ___comment_gc(vim.fn.visualmode())<CR>", "Comment"},
+    l = {
+	    name = "LSP",
+	    f = {
+		"<ESC><cmd>lua vim.lsp.buf.range_formatting()<CR>", "Format"
+	    }
+    }
 }
 function kb:setup()
     local wk = require 'which-key'
