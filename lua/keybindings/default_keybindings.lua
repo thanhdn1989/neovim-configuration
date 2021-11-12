@@ -68,6 +68,11 @@ local keys = {
       ["<C-b>"] = ":NvimTreeToggle<CR>",
       ["<C-p>"] = ":Telescope find_files<CR>",
       ["<C-F>"] = ":Telescope live_grep<CR>",
+      ["gd"] = "<cmd>lua vim.lsp.buf.definition()<CR>",
+      ["gD"] = "<cmd>lua vim.lsp.buf.declaration()<CR>",
+      ["gr"] = "<cmd>lua vim.lsp.buf.references()<CR>",
+      ["gI"] = "<cmd>lua vim.lsp.buf.implementation()<CR>",
+      ["gs"] = "<cmd>lua vim.lsp.buf.signature_help()<CR>",
     },
 
     ---@usage change or add keymappings for terminal mode

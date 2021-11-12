@@ -94,7 +94,8 @@ local mappings = {
         h = {"<cmd>BufferCloseBuffersLeft<cr>", "Close all to the left"},
         l = {"<cmd>BufferCloseBuffersRight<cr>", "Close all to the right"},
         D = {"<cmd>BufferOrderByDirectory<cr>", "Sort by directory"},
-        L = {"<cmd>BufferOrderByLanguage<cr>", "Sort by language"}
+        L = {"<cmd>BufferOrderByLanguage<cr>", "Sort by language"},
+        c = {":bd<CR>", "Close current"}
     },
     p = {
         name = "Packer",
