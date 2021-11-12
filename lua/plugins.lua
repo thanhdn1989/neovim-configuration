@@ -82,6 +82,7 @@ return packer.startup(function(use)
 
     use {'altercation/vim-colors-solarized'}
     use {'joshdick/onedark.vim', config = function() vim.cmd('colorscheme onedark') end }
+    use 'folke/tokyonight.nvim'
     use {"kyazdani42/nvim-web-devicons"}
 
     use {

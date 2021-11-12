@@ -8,6 +8,7 @@ vim.opt.mouse = 'a'
 vim.o.termguicolors = true
 vim.o.background = "dark"
 vim.g.colors_name = "onedark"
+vim.g.tokyonight_style = "night"
 vim.o.swapfile = false
 vim.o.scrolloff = 8
 vim.o.hidden = true

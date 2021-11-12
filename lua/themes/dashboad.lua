@@ -35,6 +35,10 @@ local custom_section = {
     e = {
       description = { "  Find Word          " },
       command = "Telescope live_grep",
+    },
+    f = {
+      description = { "❂  Colorschemes        " },
+      command = "Telescope colorscheme",
     }
   }
 
