@@ -133,5 +133,7 @@ return packer.startup(function(use)
 
 	use { 'kosayoda/nvim-lightbulb', config = function() vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]] end }
 
+    use 'folke/trouble.nvim'
+
     if packer_bootstrap then require('packer').sync() end
 end)

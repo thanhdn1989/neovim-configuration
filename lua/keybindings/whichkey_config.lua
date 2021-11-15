@@ -154,7 +154,16 @@ local mappings = {
             "Workspace Symbols"
         }
     },
-	g = { '<cmd>lua _lazygit_toggle()<CR>', 'Git'	}
+	g = { '<cmd>lua _lazygit_toggle()<CR>', 'Git'	},
+    x = {
+        name = "Trouble",
+        x = { "cmd>Trouble<cr>", "Toggle"},
+        w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Workspace trouble" },
+        d = { "<cmd>Trouble lsp_document_diagnostics<cr>", "Document trouble" },
+        l = { "<cmd>Trouble loclist<cr>", "Location" },
+        q = { "<cmd>Trouble quickfix<cr>", "Quickfix" },
+        r = { "<cmd>Trouble lsp_references<cr>", "References" }
+    }
 }
 
 local vmappings = {
