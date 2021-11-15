@@ -63,11 +63,16 @@ return packer.startup(function(use)
 
     -- Completion
     use {
-        'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-path',
-        'hrsh7th/cmp-cmdline', 'hrsh7th/nvim-cmp', 
-	'hrsh7th/cmp-vsnip',
+        'hrsh7th/cmp-nvim-lsp', 
+        'hrsh7th/cmp-buffer', 
+        'hrsh7th/cmp-path',
+        'hrsh7th/cmp-cmdline', 
+        'hrsh7th/nvim-cmp', 
+	    'hrsh7th/cmp-vsnip',
         'hrsh7th/vim-vsnip'
     }
+
+    use { 'onsails/lspkind-nvim' }
 
     -- Prettier
     use {'prettier/vim-prettier', run = 'npm install'}
@@ -81,8 +86,8 @@ return packer.startup(function(use)
     use 'folke/which-key.nvim'
 
     use {'altercation/vim-colors-solarized'}
-    use {'joshdick/onedark.vim', config = function() vim.cmd('colorscheme onedark') end }
-    use 'folke/tokyonight.nvim'
+    use {'joshdick/onedark.vim'}
+    use {'folke/tokyonight.nvim', config = function() vim.cmd('colorscheme tokyonight') end }
     use {"kyazdani42/nvim-web-devicons"}
 
     use {

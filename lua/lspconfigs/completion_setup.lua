@@ -22,7 +22,7 @@ function cmp_setup:setup()
 
     -- Setup nvim-cmp.
     local cmp = require 'cmp'
-
+    local lspkind = require('lspkind')
     cmp.setup({
         confirm_opts = {behavior = cmp.ConfirmBehavior.Replace, select = false},
         completion = {
@@ -39,7 +39,9 @@ function cmp_setup:setup()
         documentation = {
             border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}
         },
-
+        formatting = {
+            format = lspkind.cmp_format()
+        },
         mapping = {
             ["<C-k>"] = cmp.mapping.select_prev_item(),
             ["<C-j>"] = cmp.mapping.select_next_item(),
