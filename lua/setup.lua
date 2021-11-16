@@ -10,8 +10,7 @@ end
 function setup:setup_keybindings()
     -- Setup keybinding
     require'keybindings.default_keybindings'.setup()
-    local kb = require('keybindings.whichkey_config')
-    kb.setup()
+    require('keybindings.whichkey_config').setup()
 end
 
 return setup

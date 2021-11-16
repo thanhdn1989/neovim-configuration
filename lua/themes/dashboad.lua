@@ -54,22 +54,22 @@ local custom_section = {
     local text = require "interface.text"
     vim.g.dashboard_custom_footer = text.align_center({ width = 0 }, footer, 0.49)
 
-    require("core.autocmds").define_augroups {
-      _dashboard = {
-        -- seems to be nobuflisted that makes my stuff disappear will do more testing
-        {
-          "FileType",
-          "dashboard",
-          "setlocal nocursorline noswapfile synmaxcol& signcolumn=no norelativenumber nocursorcolumn nospell  nolist  nonumber bufhidden=wipe colorcolumn= foldcolumn=0 matchpairs= ",
-        },
-        {
-          "FileType",
-          "dashboard",
-          "set showtabline=0 | autocmd BufLeave <buffer> set showtabline=" .. vim.opt.showtabline._value,
-        },
-        { "FileType", "dashboard", "nnoremap <silent> <buffer> q :q<CR>" },
-      },
-    }
+    -- require("core.autocmds").define_augroups {
+    --   _dashboard = {
+    --     -- seems to be nobuflisted that makes my stuff disappear will do more testing
+    --     {
+    --       "FileType",
+    --       "dashboard",
+    --       "setlocal nocursorline noswapfile synmaxcol& signcolumn=no norelativenumber nocursorcolumn nospell  nolist  nonumber bufhidden=wipe colorcolumn= foldcolumn=0 matchpairs= ",
+    --     },
+    --     {
+    --       "FileType",
+    --       "dashboard",
+    --       "set showtabline=0 | autocmd BufLeave <buffer> set showtabline=" .. vim.opt.showtabline._value,
+    --     },
+    --     { "FileType", "dashboard", "nnoremap <silent> <buffer> q :q<CR>" },
+    --   },
+    -- }
   end
 
 return T

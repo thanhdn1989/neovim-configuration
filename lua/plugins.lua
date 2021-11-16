@@ -99,7 +99,7 @@ return packer.startup(function(use)
     use {
         -- "hoob3rt/lualine.nvim",
         "nvim-lualine/lualine.nvim",
-        config = function() require'themes.evil_lualine'.setup() end
+        config = function() require'themes.lualine'.setup() end
     }
 
     use {"romgrk/barbar.nvim"}
@@ -131,11 +131,7 @@ return packer.startup(function(use)
         end
       }
 
-	use { 'nvim-treesitter/nvim-treesitter', 
-        config = function()
-            require'core.treesitter'.setup()
-        end 
-    }
+	use { 'nvim-treesitter/nvim-treesitter' }
 
 	use { 'windwp/nvim-autopairs', config = function() require'nvim-autopairs'.setup() end }
 
@@ -145,6 +141,9 @@ return packer.startup(function(use)
 
     -- Indent
     use { "lukas-reineke/indent-blankline.nvim", config = function() require'core.indent'.setup() end }
+
+    -- Buffer delete but keep split window
+    use 'famiu/bufdelete.nvim'
 
     if packer_bootstrap then require('packer').sync() end
 end)
