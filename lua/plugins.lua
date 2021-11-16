@@ -74,6 +74,8 @@ return packer.startup(function(use)
 
     use { 'onsails/lspkind-nvim' }
 
+    use 'folke/trouble.nvim'
+
     -- Prettier
     use {'prettier/vim-prettier', run = 'npm install'}
 
@@ -87,13 +89,17 @@ return packer.startup(function(use)
 
     use {'altercation/vim-colors-solarized'}
     use {'joshdick/onedark.vim'}
-    use {'folke/tokyonight.nvim', config = function() vim.cmd('colorscheme tokyonight') end }
+    use {'folke/tokyonight.nvim', 
+    config = function() 
+        vim.g.tokyonight_style = "night"
+        vim.cmd('colorscheme tokyonight') 
+    end }
     use {"kyazdani42/nvim-web-devicons"}
 
     use {
         -- "hoob3rt/lualine.nvim",
         "nvim-lualine/lualine.nvim",
-        config = function() require'lualine'.setup() end
+        config = function() require'themes.evil_lualine'.setup() end
     }
 
     use {"romgrk/barbar.nvim"}
@@ -125,7 +131,11 @@ return packer.startup(function(use)
         end
       }
 
-	use { 'nvim-treesitter/nvim-treesitter' }
+	use { 'nvim-treesitter/nvim-treesitter', 
+        config = function()
+            require'core.treesitter'.setup()
+        end 
+    }
 
 	use { 'windwp/nvim-autopairs', config = function() require'nvim-autopairs'.setup() end }
 
@@ -133,7 +143,8 @@ return packer.startup(function(use)
 
 	use { 'kosayoda/nvim-lightbulb', config = function() vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]] end }
 
-    use 'folke/trouble.nvim'
+    -- Indent
+    use { "lukas-reineke/indent-blankline.nvim", config = function() require'core.indent'.setup() end }
 
     if packer_bootstrap then require('packer').sync() end
 end)
