@@ -2,8 +2,8 @@ local T = {}
 
 function T:setup()   
     require'lualine'.setup{
-        option = {
-            theme = "nightfly",
+        options = {
+            -- theme = "codedark",
             section_separators = '', 
             component_separators = ''
         }

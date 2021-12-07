@@ -154,7 +154,11 @@ local mappings = {
             "Workspace Symbols"
         }
     },
-	g = { '<cmd>lua _lazygit_toggle()<CR>', 'Git'	},
+	g = { 
+        name = "Git",
+        g = { '<cmd>lua _lazygit_toggle()<CR>', 'Open Lazy Git' },
+        b = { '<cmd>Gitsigns toggle_current_line_blame<CR>', "Blame" }
+    },
     x = {
         name = "Trouble",
         x = { "cmd>Trouble<cr>", "Toggle"},

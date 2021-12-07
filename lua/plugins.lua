@@ -91,9 +91,17 @@ return packer.startup(function(use)
     use {'joshdick/onedark.vim'}
     use {'folke/tokyonight.nvim', 
     config = function() 
-        vim.g.tokyonight_style = "night"
-        vim.cmd('colorscheme tokyonight') 
+        -- vim.g.tokyonight_style = "night"
+        -- vim.cmd('colorscheme tokyonight') 
     end }
+    use {'Mofiqul/vscode.nvim',
+    config = function()
+        -- For dark theme
+        vim.g.vscode_style = "dark"
+        vim.cmd('colorscheme vscode')
+    end }
+
+
     use {"kyazdani42/nvim-web-devicons"}
 
     use {
@@ -144,6 +152,21 @@ return packer.startup(function(use)
 
     -- Buffer delete but keep split window
     use 'famiu/bufdelete.nvim'
+
+    -- Gitsigns
+    use {
+        'lewis6991/gitsigns.nvim',
+        requires = {
+          'nvim-lua/plenary.nvim'
+        },
+        -- tag = 'release' -- To use the latest release
+        config = function()
+            require'gitsigns'.setup()
+        end
+    }
+
+    -- LSP color
+    use 'folke/lsp-colors.nvim'
 
     if packer_bootstrap then require('packer').sync() end
 end)
